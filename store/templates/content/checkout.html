@@ -1,0 +1,15 @@
+{% include "layout/customer_header.html" %}
+<div class="container" style="border: 2px solid green; width: 50%; padding: 33px; border-radius: 23px;">
+    <div class="myform">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="form-control">Enter your Delivery address</label>
+            <input type="text" class="form-control" name="address"><br>
+            <span class="text" style="margin-top: 23px; font-size: 19px;">Price: ₹ {{product.price}}</span><br><br>
+            <span class="text" style="margin-top: 23px; font-size: 19px;">Discount: {{product.discountPercentage}}%</span><br><br>
+            <span class="text" style="margin-top: 23px; font-size: 19px;">Total Price: ₹ {{total_price}}</span><br><br>
+            <button class="btn btn-success" style="margin-top: 23px;">Pay ₹ {{total_price}}</button><br>
+        </form>
+    </div>
+</div>
+{% include "layout/footer.html" %}

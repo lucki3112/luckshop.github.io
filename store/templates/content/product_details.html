@@ -1,0 +1,66 @@
+{% if data %}
+{% include "layout/vendor_header.html" %}
+{% elif customer %}
+{% include "layout/customer_header.html" %}
+{% else %}
+{% include "layout/header.html" %}
+{% endif %}
+<div class="container" style="display: flex;">
+    <div class="product_img" style="margin-right: 74px;">
+        <img src="/media/{{product.thumbnali}}" height="329" width="329" alt=""><br>
+        <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="margin-top: 45px; border: 2px solid black; border-radius: 23px; width: 45%;margin-left: 44px;">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img src="/media/{{product.thumbnali}}" class="" alt="First slide" style="border-radius: 23px; width: 223px; height: 153px;">
+                </div>
+                {% for i in img %}
+                <div class="carousel-item">
+                    <img src="/media/{{i.product_images}}" class="" alt="Second slide" style="border-radius: 23px; width: 223px; height: 153px;">
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="btn" style="display: flex; margin-top: 34px;">
+            {% if request.session %}
+            {% if item_already_exist %}
+            <div class="cart">
+                <a href="/cartdetails" class="btn btn-primary" style="background-color: orange; width: 223px; height: 55px; padding-top: 13px;"><i class="fa fa-shopping-cart" aria-hidden="true"> Go TO CART</i></a>
+            </div>
+            {% else %}
+            {% if customer %}
+            <div class="cart">
+                <a href="/cart/{{product.id}}" class="btn btn-primary" style="background-color: orange; width: 223px; height: 55px; padding-top: 13px;"><i class="fa fa-shopping-cart" aria-hidden="true"> ADD TO CART</i></a>
+            </div>
+            {% elif data %}
+            <div class="cart">
+                <a href="/" class="btn btn-primary" style="background-color: orange; width: 223px; height: 55px; padding-top: 13px;"><i class="fa fa-shopping-cart" aria-hidden="true"> ADD TO CART</i></a>
+            </div>
+            {% else %}
+            <div class="cart">
+                <a href="/login" class="btn btn-primary" style="background-color: orange; width: 223px; height: 55px; padding-top: 13px;"><i class="fa fa-shopping-cart" aria-hidden="true"> ADD TO CART</i></a>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            <div class="buy" style="margin-left: 34px;">
+                <a href="/checkout/{{product.id}}" class="btn btn-primary" style="background-color: orangered; width: 223px; height: 55px; padding-top: 13px;">BUY NOW</a>
+            </div>
+        </div>
+    </div>
+    <div class="product_details">
+        <span class="text-success" style="font-size: 23px;">{{product.title}}</span><br><br>
+        <span class="text-danger" style="font-size: 23px;">Price : {{product.price}}</span><br>
+        <span class="text-success" style="font-size: 23px;">{{product.discountPercentage}}% discount</span><br><br>
+        <span class="text-primary" style="font-size: 23px;">Rating : {{product.rating}}/5</span><br><br>
+        <span class="text-success" style="font-size: 23px;">{{product.description}}</span><br>
+    </div>
+</div>
+{% include "layout/footer.html" %}

@@ -1,0 +1,161 @@
+{% if data %}
+{% include "layout/vendor_header.html" %}
+{% elif customer %}
+{% include "layout/customer_header.html" %}
+{% else %}
+{% include "layout/header.html" %}
+{% endif %}
+  <main>
+    <div class="text" style="border-bottom: 2px solid blanchedalmond; width: 100%; font-size: 23px;padding: 13px;margin-bottom: 12px; font-family: cursive;">Suggest for you</div>
+    <div class="container">
+      <div class="carousel slide" id="myCarousel">
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="col-xs-2">
+                  <img src= "https://img.freepik.com/free-vector/special-offer-creative-sale-banner-design_1017-16284.jpg?1"
+                      class="img-responsive" height="83" width="83">
+              </div>
+          </div>
+             {% for i in product_api %}
+             <div class="item">
+              <div class="col-xs-2">
+                <a href="/apidetails/{{i.id}}">
+                  <img src= {{i.image_url}}
+                  class="img-responsive"  height="83" width="83">
+                </a><br>
+                <span class="text">{{i.title}}</span><br>
+                <span class="text-success">${{i.price}}</span>
+              </div>
+          </div>
+             {% endfor %}
+          </div> <a class="left carousel-control"
+                  href="#myCarousel"
+                  data-slide="prev">
+      <i class="glyphicon glyphicon-chevron-left">
+      </i>
+      </a>
+          <a class="right carousel-control"
+          href="#myCarousel"
+          data-slide="next">
+          <i class="glyphicon glyphicon-chevron-right">
+          </i>
+      </a>
+
+      </div>
+  </div>
+  <div class="bbb_viewed">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+               <div class="bbb_main_container">
+                <div class="bbb_viewed_title_container">
+                    <h3 class="bbb_viewed_title">Laptops</h3>
+                    <div class="bbb_viewed_nav_container">
+                        <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                        <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+                <div class="bbb_viewed_slider_container">
+                    <div class="owl-carousel owl-theme bbb_viewed_slider">
+                      {% for j in product %}
+                      {% if j.category == "laptop" %}
+                        <div class="owl-item">
+                            <div class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="bbb_viewed_image"><img src="/media/{{j.thumbnali}}" alt=""></div>
+                                <div class="bbb_viewed_content text-center">
+                                    <div class="bbb_viewed_price">₹{{j.price}}</div>
+                                    <div class="bbb_viewed_name"><a href="/productdetails/{{j.id}}">{{j.title}}</a></div>
+                                </div>
+                                <ul class="item_marks">
+                                    <li class="item_mark item_discount">-{{j.discountPercentage}}%</li>
+                                    <li class="item_mark item_new">new</li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                       {% endfor %}
+                    </div>
+                </div>
+               </div> 
+            </div>
+        </div>
+      </div>
+</div>
+<div class="bbb_viewed">
+  <div class="container">
+  <div class="row">
+      <div class="col">
+         <div class="bbb_main_container">
+          <div class="bbb_viewed_title_container">
+              <h3 class="bbb_viewed_title">Mobiles</h3>
+              <div class="bbb_viewed_nav_container">
+                  <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                  <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
+              </div>
+          </div>
+          <div class="bbb_viewed_slider_container">
+              <div class="owl-carousel owl-theme bbb_viewed_slider">
+                {% for k in product %}
+                {% if k.category == "mobile" %}
+                  <div class="owl-item">
+                      <div class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                          <div class="bbb_viewed_image"><img src="/media/{{k.thumbnali}}" alt=""></div><br><br><br>
+                          <div class="bbb_viewed_content text-center">
+                              <div class="bbb_viewed_price">₹{{k.price}}</div>
+                              <div class="bbb_viewed_name"><a href="/productdetails/{{k.id}}">{{k.title}}</a></div>
+                          </div>
+                          <ul class="item_marks">
+                              <li class="item_mark item_discount">-{{k.discountPercentage}}%</li>
+                              <li class="item_mark item_new">new</li>
+                          </ul>
+                      </div>
+                  </div>
+                  {% endif %}
+                 {% endfor %}
+              </div>
+          </div>
+         </div> 
+      </div>
+  </div>
+</div>
+</div>
+<div class="bbb_viewed">
+  <div class="container">
+  <div class="row">
+      <div class="col">
+         <div class="bbb_main_container">
+          <div class="bbb_viewed_title_container">
+              <h3 class="bbb_viewed_title">Electronic Devices</h3>
+              <div class="bbb_viewed_nav_container">
+                  <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                  <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
+              </div>
+          </div>
+          <div class="bbb_viewed_slider_container">
+              <div class="owl-carousel owl-theme bbb_viewed_slider">
+                {% for p in product %}
+                {% if p.category == "electronic device" %}
+                  <div class="owl-item">
+                      <div class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                          <div class="bbb_viewed_image"><img src="/media/{{p.thumbnali}}" alt=""></div><br><br><br><br><br><br><br><br>
+                          <div class="bbb_viewed_content text-center">
+                              <div class="bbb_viewed_price">₹{{p.price}}</div>
+                              <div class="bbb_viewed_name"><a href="/productdetails/{{p.id}}">{{p.title}}</a></div>
+                          </div>
+                          <ul class="item_marks">
+                              <li class="item_mark item_discount">-{{p.discountPercentage}}%</li>
+                              <li class="item_mark item_new">new</li>
+                          </ul>
+                      </div>
+                  </div>
+                  {% endif %}
+                 {% endfor %}
+              </div>
+          </div>
+         </div> 
+      </div>
+  </div>
+</div>
+</div>
+  </main>
+{% include "layout/footer.html" %}

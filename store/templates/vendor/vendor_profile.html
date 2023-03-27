@@ -1,0 +1,102 @@
+{% include "layout/vendor_header.html" %}
+<div class="admin_view" style="display: flex;">
+    <div class="sidenav">
+        <ul style="list-style: none;">
+            <li><img src="media/{{vendor.image}}/" alt="image" style="width: 183px; height: 183px; border-radius: 50%;"></li>
+            <li style="font-size: 16px;margin-top: 34px;">Name : {{vendor.fullname}}</li>
+            <li style="font-size: 16px;margin-top: 34px;">Company name : {{vendor.company_name}}</li>
+            <li style="font-size: 16px;margin-top: 34px;">Contact number : {{vendor.contact}}</li>
+            <li style="font-size: 16px;margin-top: 34px;">Email : {{vendor.email}}</li>
+            <li style="font-size: 16px;margin-top: 34px;">Address : {{vendor.address}}</li>
+            <li style="font-size: 16px;margin-top: 34px;">Pin code : {{vendor.pincode}}</li>
+            <li style="font-size: 16px;margin-top: 34px;"><a href="/vendor_logout" class="btn btn-danger"><i class="fa fa-sign-out" aria-hidden="true"> Logout</i></a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <a href="/addproduct" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"> Add product</i></a>
+        <div style="margin-left:53px" class="btn btn-danger" id="order_notification"><i class="fa fa-bell" aria-hidden="true" style="font-size: 23px;"> Order notifications</i></div>
+        <div class="all_products">
+                <table class="table table-success">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Discount percentage</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Thumbanli</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    {% for i in product %}
+                    <tbody>
+                        <tr class="">
+                            <td>{{i.title}}</td>
+                            <td>{{i.price}}</td>
+                            <td>{{i.discountPercentage}}</td>
+                            <td>{{i.brand}}</td>
+                            <td>{{i.category}}</td>
+                            <td>{{i.stock}}</td>
+                            <td><img src="media/{{i.thumbnali}}" height="43" width="43" alt=""></td>
+                            <td>
+                                <a href="/editproduct/{{i.id}}" class="btn btn-success">Edit</a>
+                                <a href="/productdelete/{{i.id}}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+        </div>
+        <div aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              {% if product.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ product.previous_page_number }}">Previous</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+                </li>
+              {% endif %}
+              {% for i in product.paginator.page_range %}
+                {% if product.number == i %}
+                  <li class="page-item active" aria-current="page">
+                    <span class="page-link">
+                      {{ i }}
+                      <span class="sr-only">(current)</span>
+                    </span>
+                  </li>
+                {% else %}
+                  <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+              {% endfor %}
+              {% if product.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ product.next_page_number }}">Next</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#order_notification').click(function(){
+        $.ajax({
+          url: "/customer_order",
+          type: "GET",
+          success: function(data){
+            $('.content').html(data)
+          }
+        })
+    });
+});
+</script>
+{% include "layout/footer.html" %}

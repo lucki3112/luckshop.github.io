@@ -1,0 +1,22 @@
+{% if data %}
+{% include "layout/vendor_header.html" %}
+{% elif customer %}
+{% include "layout/customer_header.html" %}
+{% else %}
+{% include "layout/header.html" %}
+{% endif %}
+<div class="container">
+    {% for i in product %}
+    <div class="search-result" style="display: flex; margin-top: 43px;">
+        <div class="img">
+            <img src="/media/{{i.thumbnali}}" style="height: 78px; width: 78px;" alt="">
+        </div>
+        <div class="details" style="margin-left: 34px;">
+            <a href="/productdetails/{{i.id}}">{{i.title}}</a>
+            <div class="price">Price : {{i.price}}</div>
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% include "layout/footer.html" %}

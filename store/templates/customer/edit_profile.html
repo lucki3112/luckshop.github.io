@@ -1,0 +1,180 @@
+{% include "layout/customer_header.html" %}
+<style>
+    body{
+    background:#f5f5f5;
+}
+/**
+ * Panels
+ */
+/*** General styles ***/
+.panel {
+  box-shadow: none;
+}
+.panel-heading {
+  border-bottom: 0;
+}
+.panel-title {
+  font-size: 17px;
+}
+.panel-title > small {
+  font-size: .75em;
+  color: #999999;
+}
+.panel-body *:first-child {
+  margin-top: 0;
+}
+.panel-footer {
+  border-top: 0;
+}
+
+.panel-default > .panel-heading {
+    color: #333333;
+    background-color: transparent;
+    border-color: rgba(0, 0, 0, 0.07);
+}
+
+form label {
+    color: #999999;
+    font-weight: 400;
+}
+
+.form-horizontal .form-group {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+}
+
+.profile__contact-info-icon {
+    float: left;
+    font-size: 18px;
+    color: #999999;
+}
+.profile__contact-info-body {
+    overflow: hidden;
+    padding-left: 20px;
+    color: #999999;
+}
+.profile-avatar {
+  width: 200px;
+  position: relative;
+  margin: 0px auto;
+  margin-top: 196px;
+  border: 4px solid #f3f3f3;
+}
+</style>
+<div class="container bootstrap snippets bootdeys">
+    <div class="row">
+      <div class="col-xs-12 col-sm-9">
+        <form class="form-horizontal" action="" method="post">
+            {% csrf_token %}
+            <div class="panel panel-default">
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                      </symbol>
+                      <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </symbol>
+                </svg>
+                {% if s_message %}
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                    <div>
+                      {{s_message}}
+                    </div>
+                  </div>
+                {% endif %}
+                {% if f_message %}
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                      {{f_message}}
+                    </div>
+                  </div>
+                {% endif %}
+              <div class="panel-body text-center">
+               <img src="/media/{{user.image}}" class="img-circle profile-avatar" alt="User avatar">
+              </div>
+            </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">User info</h4>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fullname</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" value="{{user.fullname}}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="address" value="{{user.address}}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Pin Code</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="pin" value="{{user.pincode}}">
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">Contact info</h4>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Mobile number</label>
+                <div class="col-sm-10">
+                  <input type="tel" name="mobile" value="{{user.contact}}" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">E-mail address</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" name="email" value="{{user.email}}">
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">Security</h4>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Current password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" name="c_password">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">New password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" name="n_password">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+{% include "layout/footer.html" %}

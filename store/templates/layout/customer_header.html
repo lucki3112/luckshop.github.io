@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>LuckShop</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script type="text/javascript"
+  src="//code.jquery.com/jquery-1.9.1.js">
+</script>
+  <!-- Bootstrap CSS v5.2.1 -->
+  <style>
+     @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900|Rubik:300,400,500,700,900');
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px
+}
+
+
+
+div {
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+
+
+
+.bbb_viewed {
+    padding-top: 51px;
+    padding-bottom: 60px;
+    background: #eff6fa
+}
+
+.bbb_main_container{
+        background-color: #fff;
+   padding: 11px;
+}
+
+.bbb_viewed_title_container {
+    border-bottom: solid 1px #dadada
+}
+
+.bbb_viewed_title {
+        margin-bottom: 16px;
+   margin-top: 8px;
+
+}
+
+.bbb_viewed_nav_container {
+    position: absolute;
+    right: -5px;
+    bottom: 14px
+}
+
+.bbb_viewed_nav {
+    display: inline-block;
+    cursor: pointer
+}
+
+.bbb_viewed_nav i {
+    color: #dadada;
+    font-size: 18px;
+    padding: 5px;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease
+}
+
+.bbb_viewed_nav:hover i {
+    color: #606264
+}
+
+.bbb_viewed_prev {
+    margin-right: 15px
+}
+
+.bbb_viewed_slider_container {
+    padding-top: 13px;
+}
+
+.bbb_viewed_item {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 2px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+    padding-right: 30px
+}
+
+.bbb_viewed_image {
+        width: 150px;
+   height: 150px;
+}
+
+.bbb_viewed_image img {
+    display: block;
+    max-width: 100%
+}
+
+.bbb_viewed_content {
+    width: 100%;
+    margin-top: 25px
+}
+
+.bbb_viewed_price {
+    font-size: 16px;
+    color: #000000;
+    font-weight: 500
+}
+
+.bbb_viewed_item.discount .bbb_viewed_price {
+    color: #df3b3b
+}
+
+.bbb_viewed_price span {
+    position: relative;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6);
+    margin-left: 8px
+}
+
+.bbb_viewed_price span::after {
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: 1px;
+    background: #8d8d8d;
+    content: ''
+}
+
+.bbb_viewed_name {
+    margin-top: 3px
+}
+
+.bbb_viewed_name a {
+    font-size: 14px;
+    color: #000000;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease
+}
+
+.bbb_viewed_name a:hover {
+    color: #0e8ce4
+}
+
+.item_marks {
+    position: absolute;
+    top: 18px;
+    left: 18px
+}
+
+.item_mark {
+    display: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 36px;
+    text-align: center
+}
+
+.item_discount { 
+    background: #df3b3b;
+    margin-right: 5px
+}
+
+.item_new {
+    background: #0e8ce4
+}
+
+.bbb_viewed_item.discount .item_discount {
+    display: inline-block
+}
+
+.bbb_viewed_item.is_new .item_new {
+    display: inline-block
+}
+  </style>
+  <script>
+    $(document).ready(function()
+{
+
+   
+        if($('.bbb_viewed_slider').length)
+        {
+            var viewedSlider = $('.bbb_viewed_slider');
+
+            viewedSlider.owlCarousel(
+            {
+                loop:true,
+                margin:30,
+                autoplay:true,
+                autoplayTimeout:6000,
+                nav:false,
+                dots:false,
+                responsive:
+                {
+                    0:{items:1},
+                    575:{items:2},
+                    768:{items:3},
+                    991:{items:4},
+                    1199:{items:6}
+                }
+            });
+
+            if($('.bbb_viewed_prev').length)
+            {
+                var prev = $('.bbb_viewed_prev');
+                prev.on('click', function()
+                {
+                    viewedSlider.trigger('prev.owl.carousel');
+                });
+            }
+
+            if($('.bbb_viewed_next').length)
+            {
+                var next = $('.bbb_viewed_next');
+                next.on('click', function()
+                {
+                    viewedSlider.trigger('next.owl.carousel');
+                });
+            }
+        }
+
+
+    });
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/store/static/index.css">
+    <link rel="stylesheet"
+    type="text/css"
+    href="/css/result-light.css">
+    <script type="text/javascript"
+            src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+</script>
+<link rel="stylesheet"
+        type="text/css"
+        href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+        type="text/css"
+        href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script type="text/javascript">
+  $(window).load(function() {
+      $(".carousel .item").each(function() {
+          var i = $(this).next();
+          i.length || (i = $(this).siblings(":first")),
+          i.children(":first-child").clone().appendTo($(this));
+           
+          for (var n = 0; n < 4; n++)(i = i.next()).length ||
+          (i = $(this).siblings(":first")),
+          i.children(":first-child").clone().appendTo($(this))
+      })
+  });
+</script>
+<link rel="stylesheet" type="text/css" href="https://www.avenuefashion.in/template/default/asset/css/override.css">
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e1e7ed;
+    text-align: center;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #33363b;
+}
+
+p{
+    font-size: 14px;
+    color: #868d9b;
+}
+
+.card {
+    width: 360px;
+    height: auto;
+    background-color: #ffffff;
+    margin: 0 auto;
+    margin-top: 80px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card_profile_img {
+    width: 120px;
+    height: 120px;
+    background-color: #868d9b;
+    background: url("/media/{{user.image}}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #ffffff;
+    border-radius: 120px;
+    margin: 0 auto;
+    margin-top: -60px;
+
+}
+
+.card_background_img {
+    width: 100%;
+    height: 180px;
+    background-color: #e1e7ed;
+    background: url("https://source.unsplash.com/9wg5jCEPBsw");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.user_details p {
+    margin-bottom: 20px;
+    margin-top: -5px;
+}
+
+.user_details h3 {
+    margin-top: 10px;
+}
+
+.card_count {
+    padding: 30px;
+    border-top: 1px solid #dde1e7;
+}
+
+.count {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.count p {
+    margin-top: -10px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+</style>
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/" style="color: white;">LuckShop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/" style="color: white;"><i class="fa fa-home" aria-hidden="true"> Home</i></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                My Account
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/profile"><i class="fa fa-user" aria-hidden="true"><span class="text" style="margin-left: 23px;">Profile</span></i></a></li>
+                <li><a class="dropdown-item" href="/order"><i class="fa fa-shopping-cart" aria-hidden="true"><span class="text" style="margin-left: 23px;">Orders</span></i></a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/c_logout"><i class="fa fa-sign-out" aria-hidden="true"><span class="text" style="margin-left: 23px;">Logout</span></i></a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/cartdetails" style="color: white;"><i class="fa fa-shopping-cart" aria-hidden="true"> Cart</i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" style="color: white;"></a>
+              </li>
+          </li>
+          </ul>
+          <form class="d-flex" role="search" action="search" method="post">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" name="search" placeholder="Search using category" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>

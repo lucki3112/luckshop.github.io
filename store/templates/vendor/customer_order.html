@@ -1,0 +1,36 @@
+<div class="box" style="display: flex;">
+    <div class="customer_name" style="margin-right: 34px;">
+        <div class="text" style="margin-bottom: 23px; font-size: 23px; border-bottom: 2px solid black;">Customer</div>
+        {% for j in customer %}
+        <div class="text" >{{j.fullname}}</div><br><br><br><br><br><br>
+        {% endfor %}
+    </div>
+    <div class="product_details">
+        <div class="text" style="margin-bottom: 23px; font-size: 23px; border-bottom: 2px solid black;">Product</div>
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Thumbnali</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Brand</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in order %}
+                    <tr class="">
+                        <td><img src="/media/{{i.thumbnali}}" style="height: 78px; width: 78px;" alt=""></td>
+                        <td>{{i.title}}</td>
+                        <td>{{i.price}}</td>
+                        <td>{{i.discountPercentage}} %</td>
+                        <td>{{i.brand}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>

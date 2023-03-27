@@ -1,0 +1,17 @@
+{% include "layout/customer_header.html" %}
+<div class="container">
+    <div class="table-responsive">
+    <table class="table">
+        <tbody>
+    {% for i in product %}
+                <tr class="">
+                    <td><img src="/media/{{i.thumbnali}}" style="height: 73px; width: 73px;" alt=""></td>
+                    <td>{{i.title}}</td>
+                    <td>₹ {{i.price}}</td>
+                </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% include "layout/footer.html" %}

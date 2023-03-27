@@ -1,0 +1,23 @@
+{% include "layout/customer_header.html" %}
+<div class="card">
+    <div class="card_background_img"></div>
+    <div class="card_profile_img"></div>
+    <div class="user_details">
+        <br><br><p style="font-size: 23px;"><b>{{user.fullname}}</b></p>
+    </div>
+    <div class="card_count">
+        <div class="count">
+            <div class="fans">
+                <p><a href="/order">Orders</a></p>
+            </div>
+            <div class="following">
+                <p><a href="/cartdetails">Cart</a></p>
+            </div>
+            <div class="post">
+                <p><a href="/edit_profile/{{user.id}}">edit</a></p>
+            </div>
+        </div>
+         <a href="/c_logout" class="btn btn-danger"><i class="fa fa-sign-out" aria-hidden="true"><span class="text" style="margin-left: 13px;">Logout</span></i></a>
+    </div>
+</div>
+{% include "layout/footer.html" %}

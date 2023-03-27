@@ -1,0 +1,30 @@
+{% include "layout/vendor_header.html" %}
+<div class="container" style="display: flex;">
+  <div class="edit_page">
+    <form action="update_product/{{product.id}}" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="" class="form-label">Title</label>
+        <input type="text" name="title" value="{{product.title}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Price</label>
+        <input type="text" name="price" value="{{product.price}}" class="form-control" placeholder="" aria-describedby="helpId">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Discount Percentage</label>
+        <input type="text" value="{{product.discountPercentage}}" name="discountPercentage" id="" class="form-control" placeholder="" aria-describedby="helpId">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Description</label>
+        <textarea class="form-control" name="description" id="" rows="3">{{product.description}}</textarea>
+      </div>
+      <button class="btn btn-success">Update</button>
+    </form>
+  </div>
+  <div class="add_image">
+<a href="/addimages" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"> Add more images for your product</i></a>
+  </div>
+</div>
+
+{% include "layout/footer.html" %}

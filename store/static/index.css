@@ -1,0 +1,100 @@
+nav{
+    background-color: #643ad8;
+
+}
+.nav-link{
+    color: white;
+}
+.nav-item{
+    margin-left: 23px;
+}
+a:hover{
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    margin-top: 34px;
+    margin-bottom: 45px;
+}
+.vendor{
+    padding: 54px;
+    border: 2px solid black;
+    border-radius: 23px;
+    background-color: #bba6fa;
+}
+.form-control{
+    width: 223px;
+    border: 2px solid black;
+}
+.hyperlink{
+    margin-top: 23px;
+}
+.vendor-login{
+    padding: 54px;
+    border: 2px solid black;
+    border-radius: 23px;
+    width: 845px;
+    background-color: #bba6fa;
+}
+footer{
+    margin-top: 34px;
+}
+.sidenav{
+    border: 2px solid black;
+    padding: 34px;
+    margin-top: 13px;
+    background-color: #02010ed6;
+    color: white;
+    height: 100%;
+}
+.content{
+    margin-left: 43px;
+    margin-top: 13px;
+}
+.addproduct{
+    border: 2px solid black;
+    padding: 44px;
+}
+tr{
+    border: 2px solid black;
+}
+td,th{
+    border: 2px solid black;
+}
+.all_products{
+    margin-top: 23px;
+}
+.edit_page{
+    border: 2px solid black;
+    margin-right: 54px;
+    padding: 34px;
+    border-radius: 23px;
+}
+.imageform{
+    border: 2px solid black;
+    padding: 34px;
+    width: 50%;
+}
+.dropdown .dropdown-menu {
+    transform: scaleY(0);    
+    transform-origin: top;
+    transition: transform 0.26s ease;
+ }
+    
+ .dropdown-menu.show {
+      margin-top: 0vh;
+      width: 40%;
+      margin-left: 38vw;
+ }
+    
+ .dropdown:hover .dropdown-menu {
+      display: flex;
+      flex-wrap: wrap;
+      transform: scaleY(1)
+ }
+    
+ .dropdown-item {
+      width: 25% !important;
+ }

@@ -1,0 +1,28 @@
+{% if data %}
+{% include "layout/vendor_header.html" %}
+{% elif customer %}
+{% include "layout/customer_header.html" %}
+{% else %}
+{% include "layout/header.html" %}
+{% endif %}
+<div class="container mid_inner">
+	<h1>Contact Us</h1>
+		<div class="">
+			<div class="whitebox div_2">
+				<div class="sub_heading2">Contact Information</div>
+				<div class="br_sm"></div>
+				<div class="address_sec"> <span><i class="fas fa-map-marker-alt"></i></span> <span>LuckShop Fashion Address</span> </div>
+				<div class="address_sec"> <span><i class="fas fa-phone"></i></span> <span>+919382265615</span> </div>
+				<div class="address_sec"> <span><i class="fas fa-envelope"></i></span> <span>skluckihossain@gmail.com</span> </div>
+				<div class="br"></div>
+				<div class="sub_heading2">Get in Touch</div>
+				<div class="address_sec">
+					<a href="https://www.facebook.com/profile.php?id=100087344520559&mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f socialbg"></i></a>
+					<a href="https://twitter.com/LuckiHossain?t=Ch3CTErTOdN5Gu1840TDcw&s=08" target="_blank"><i class="fab fa-twitter socialbg"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-youtube socialbg"></i></a> 
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    {% include "layout/footer.html" %}

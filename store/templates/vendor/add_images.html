@@ -1,0 +1,14 @@
+{% include "layout/vendor_header.html" %}
+<div class="container">
+    <div class="imageform">
+        <form action="add_images" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="" class="form-label">Add images for your product</label>
+                <input type="file" class="form-control" name="image" id="" placeholder="" aria-describedby="fileHelpId" accept="image/*" multiple>
+              </div>
+              <button class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>
+{% include "layout/footer.html" %}

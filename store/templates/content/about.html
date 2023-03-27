@@ -1,0 +1,16 @@
+{% if data %}
+{% include "layout/vendor_header.html" %}
+{% elif customer %}
+{% include "layout/customer_header.html" %}
+{% else %}
+{% include "layout/header.html" %}
+{% endif %}
+<div class="container mid_inner">
+	<h1>About Us</h1>
+	<p><p>LuckShop is the new digital platform to start your own co-commerce business. It connects every individual in business with great products and well support system to reach the highest number of audience in Pan India. To connect with the creator, influencer, and seller at the same time to grow together is the best policy of LuckShop.&nbsp;</p>
+
+<p>With the Slogan, <strong>&quot;Aatma-Nirbhar&quot; </strong>LuckShop is creating opportunities for youth to make them economically and financially independent.&nbsp;</p>
+</p>
+</div>
+<div>
+{% include "layout/footer.html" %}

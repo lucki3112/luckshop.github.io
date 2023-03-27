@@ -1,0 +1,40 @@
+{% if data %}
+{% include "layout/vendor_header.html" %}
+{% elif customer %}
+{% include "layout/customer_header.html" %}
+{% else %}
+{% include "layout/header.html" %}
+{% endif %}
+<div class="container" style="display: flex;">
+    <div class="product_img" style="margin-right: 74px;">
+        <img src={{product.image_url}} height="329" width="329" alt=""><br>
+        <div class="btn" style="display: flex; margin-top: 34px;">
+            {% if request.session %}
+            {% if item_already_exist %}
+            <div class="cart">
+                <a href="/cartdetails" class="btn btn-primary" style="background-color: orange; width: 223px; height: 55px; padding-top: 13px;"><i class="fa fa-shopping-cart" aria-hidden="true"> Go TO CART</i></a>
+            </div>
+            {% else %}
+            {% if customer %}
+            <div class="cart">
+                <a href="/apicart/{{product.id}}" class="btn btn-primary" style="background-color: orange; width: 223px; height: 55px; padding-top: 13px;"><i class="fa fa-shopping-cart" aria-hidden="true"> ADD TO CART</i></a>
+            </div>
+            {% else %}
+            <div class="cart">
+                <a href="/login" class="btn btn-primary" style="background-color: orange; width: 223px; height: 55px; padding-top: 13px;"><i class="fa fa-shopping-cart" aria-hidden="true"> ADD TO CART</i></a>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            <div class="buy" style="margin-left: 34px;">
+                <a href="#" class="btn btn-primary" style="background-color: orangered; width: 223px; height: 55px; padding-top: 13px;">BUY NOW</a>
+            </div>
+        </div>
+    </div>
+    <div class="product_details">
+        <span class="text-success" style="font-size: 23px;">{{product.title}}</span><br><br>
+        <span class="text-danger" style="font-size: 23px;">Price : $ {{product.price}}</span><br>
+        <span class="text-success" style="font-size: 23px;">{{product.description}}</span><br>
+    </div>
+</div>
+{% include "layout/footer.html" %}

@@ -1,0 +1,43 @@
+{% if data %}
+{% include "layout/vendor_header.html" %}
+{% elif customer %}
+{% include "layout/customer_header.html" %}
+{% else %}
+{% include "layout/header.html" %}
+{% endif %}
+<div class="container">
+    <div class="productlist">
+      {% for i in cart %}
+      <div class="product_details" style="display: flex; margin-top: 73px;">
+        <div class="p_img" style="margin-right: 53px;">
+          <img src="media/{{i.thumbnali}}" height="96" width="96" alt="">
+        </div>
+        <div class="p_details">
+          <a href="/productdetails/{{i.id}}" class="text-success" style="font-size: 19px;">{{i.title}}</a><br>
+          <span class="text-danger" style="font-size: 19px;">{{i.brand}}</span><br>
+          <span class="text-primary" style="font-size: 19px;">Price : {{i.price}}</span>
+        </div>
+        <div class="remove" style="margin-left: 34px;">
+          <a href="/cartdelete/{{i.id}}" class="btn btn-danger">Remove</a>
+        </div>
+      </div>
+      {% endfor %}
+      {% for j in api_cart %}
+      <div class="product_details" style="display: flex; margin-top: 73px;">
+        <div class="p_img" style="margin-right: 53px;">
+          <img src={{j.image_url}} height="96" width="96" alt="">
+        </div>
+        <div class="p_details">
+          <a href="/apidetails/{{j.id}}" class="text-success" style="font-size: 19px;">{{j.title}}</a><br>
+          <span class="text-danger" style="font-size: 19px;">{{j.brand}}</span><br>
+          <span class="text-primary" style="font-size: 19px;">Price : $ {{j.price}}</span>
+        </div>
+        <div class="remove" style="margin-left: 34px;">
+          <a href="/api_cartdelete/{{j.id}}" class="btn btn-danger">Remove</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+  </div>
+{% include "layout/footer.html" %}
